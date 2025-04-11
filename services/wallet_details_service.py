@@ -34,14 +34,19 @@ class WalletDetailsService:
             'os': 'web'
         }
 
-    def get_wallet_details(self, wallet_address: str):
-        """Fetch detailed wallet information from all endpoints"""
+    def get_wallet_details(self, wallet_address: str, period: str = '7d'):
+        """Fetch detailed wallet information from all endpoints
+        
+        Args:
+            wallet_address (str): The wallet address to fetch details for
+            period (str): The time period for stats - one of '1d', '7d', '30d', 'all'. Defaults to '7d'
+        """
         base_url = "https://gmgn.ai/api/v1"
         
         # Define endpoints with query parameters
         recent_url = f"{base_url}/wallet_holdings/sol/{wallet_address}?from_app=gmgn&app_lang=en-US&os=web&limit=50&orderby=last_active_timestamp&direction=desc&showsmall=true&sellout=true&tx30d=true"
         holdings_url = f"{base_url}/wallet_holdings/sol/{wallet_address}?from_app=gmgn&app_lang=en-US&os=web&limit=50&orderby=last_active_timestamp&direction=desc&showsmall=false&sellout=false&hide_abnormal=false"
-        dashboard_url = f"{base_url}/wallet_stat/sol/{wallet_address}/7d"
+        dashboard_url = f"{base_url}/wallet_stat/sol/{wallet_address}/{period}"
         
         data = {
             "recent": {},

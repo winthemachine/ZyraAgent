@@ -472,6 +472,15 @@ def get_wallet_details():
     try:
         data = request.get_json()
         wallet_address = data.get('address')
+        period = data.get('period', '7d')  # Default to 7d if not provided
+        
+        # Validate period
+        valid_periods = ['1d', '7d', '30d', 'all']
+        if period not in valid_periods:
+            return jsonify({
+                'success': False,
+                'message': 'Invalid period. Must be one of: 1d, 7d, 30d, all'
+            }), 400
         
         if not wallet_address:
             return jsonify({
@@ -479,7 +488,7 @@ def get_wallet_details():
                 'message': 'Wallet address is required'
             }), 400
 
-        details = wallet_details_service.get_wallet_details(wallet_address)
+        details = wallet_details_service.get_wallet_details(wallet_address, period)
         
         if not details:
             return jsonify({
