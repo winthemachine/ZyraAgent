@@ -34,7 +34,7 @@ class WalletCheckerService:
 
     def get_token_distribution(self, wallet: str, period='30d'):
         """Get token distribution data for a wallet"""
-        url = f"https://gmgn.ai/defi/quotation/v1/rank/sol/wallets/{wallet}/unique_token_7d?interval={period}"
+        url = f"https://gmgn.ai/defi/quotation/v1/rank/sol/wallets/{wallet}/unique_token_7d?interval={period}&app_lang=en-US&from_app=gmgn"
         retries = 3
         
         for attempt in range(retries):

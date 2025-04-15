@@ -32,7 +32,7 @@ class TopTradersService:
 
     def fetch_top_traders(self, contract_address: str):
         """Fetch top traders data for a single contract address"""
-        url = f"https://gmgn.ai/defi/quotation/v1/tokens/top_traders/sol/{contract_address}?orderby=profit&direction=desc"
+        url = f"https://gmgn.ai/defi/quotation/v1/tokens/top_traders/sol/{contract_address}?orderby=realized_profit&direction=desc&app_lang=en-US&from_app=gmgn"
         retries = 3
 
         for attempt in range(retries):

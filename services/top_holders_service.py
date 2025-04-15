@@ -57,7 +57,7 @@ class TopHoldersService:
 
     def fetch_top_holders(self, contract_address: str):
         """Fetch top holders data for a single contract address"""
-        url = f"https://gmgn.ai/defi/quotation/v1/tokens/top_holders/sol/{contract_address}?orderby=amount_percentage&direction=desc"
+        url = f"https://gmgn.ai/defi/quotation/v1/tokens/top_holders/sol/{contract_address}?orderby=unrealized_profit&direction=desc&app_lang=en-US&from_app=gmgn"
         retries = 3
 
         for attempt in range(retries):

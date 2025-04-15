@@ -32,7 +32,7 @@ class EarlyBuyersService:
 
     def fetch_early_buyers(self, contract_address: str, limit: int = 20):
         """Fetch early buyers data for a single contract address"""
-        url = f"https://gmgn.ai/vas/api/v1/token_trades/sol/{contract_address}?revert=true"
+        url = f"https://gmgn.ai/vas/api/v1/token_trades/sol/{contract_address}?revert=true&app_lang=en-US&from_app=gmgn"
         retries = 3
 
         for attempt in range(retries):
